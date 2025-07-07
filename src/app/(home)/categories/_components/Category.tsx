@@ -28,7 +28,6 @@ const formSchema = z.object({
         .max(50),
     info: z
         .string()
-        .min(10, { message: "Info must be at least 10 characters long!" })
         .max(200, { message: "Info must be at most 200 characters long!" }),
 });
 
@@ -75,7 +74,7 @@ function Category({ slug }: { slug?: any }) {
         submitData: {},
         redirectPath: "",
         isToast: true,
-        invalidateQueries: [CATEGORIES],
+        invalidateQueries: [CATEGORIES, CATEGORIES_SINGLE],
         handleSuccess: (response: any) => {
             router.back();
         },
@@ -138,7 +137,7 @@ function Category({ slug }: { slug?: any }) {
                                                     Description
                                                 </FormLabel>
                                                 <FormControl>
-                                                    <Textarea {...field} rows={10} cols={10} />
+                                                    <Textarea {...field} />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>

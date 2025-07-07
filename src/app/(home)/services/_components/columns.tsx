@@ -85,6 +85,15 @@ export const columns = [
                         <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
                             <DropdownMenuSeparator />
+
+                            <DropdownMenuItem
+                                onClick={() => {
+                                    router.push(`/services/${slug}/details`);
+                                }}
+                            >
+                                Details
+                            </DropdownMenuItem>
+
                             <DropdownMenuItem
                                 onClick={() => {
                                     router.push(`/services/${slug}/edit`);
