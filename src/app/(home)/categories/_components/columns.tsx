@@ -91,7 +91,7 @@ export const columns = [
             const [dropdownOpen, setDropdownOpen] = useState(false);
 
             const { deleteItem, isPending, reset } = useDeleteMutation({
-                endpoint: `${API_ENDPOINTS.CATEGORIES_SINGLE}${slug}/`,
+                endpoint: `${API_ENDPOINTS.CATEGORY_DETAILS}${slug}/`,
                 invalidateQueries: [API_ENDPOINTS.CATEGORIES],
                 isToast: true,
             });

@@ -2,6 +2,7 @@
 /* eslint-disable */
 
 import { Button } from "@/components/ui/button";
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,7 +11,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 import { MoreHorizontal } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { DeleteDialog } from "@/components/ui/delete-dialog";
@@ -48,9 +51,50 @@ export const columns = [
         },
     },
     {
-        accessorKey: "category_name",
-        header: "Category",
+        accessorKey: "designations",
+        header: "Designations",
+        cell: ({ row }: any) => {
+            const count = row.original.designations || 0;
+            return (
+                <>
+                    <div>{`${count} Designation${count === 1 ? "" : "s"}`}</div>
+                </>
+            );
+        },
     },
+    {
+        accessorKey: "staffs",
+        header: "Staffs",
+        cell: ({ row }: any) => {
+            const count = row.original.staffs || 0;
+            return (
+                <>
+                    <div>{`${count} Staff${count === 1 ? "" : "s"}`}</div>
+                </>
+            );
+        },
+    },
+    // {
+    //     accessorKey: "status",
+    //     header: "Status",
+    //     cell: ({ row }: any) => {
+    //         const status: { id: string; name: string } = row.getValue("status");
+    //         return (
+    //             <div
+    //                 className={cn(`p-1 rounded-md w-max text-xs capitalize `, {
+    //                     " bg-green-600":
+    //                         status?.name?.toLowerCase() === "active",
+    //                     " bg-yellow-600":
+    //                         status?.name?.toLowerCase() === "pending",
+    //                     " bg-red-600":
+    //                         status?.name?.toLowerCase() === "inactive",
+    //                 })}
+    //             >
+    //                 {status?.name}
+    //             </div>
+    //         );
+    //     },
+    // },
     {
         id: "actions",
         cell: ({ row }: any) => {
@@ -60,8 +104,8 @@ export const columns = [
             const [dropdownOpen, setDropdownOpen] = useState(false);
 
             const { deleteItem, isPending, reset } = useDeleteMutation({
-                endpoint: `${API_ENDPOINTS.SERVICE_DETAILS}${slug}/`,
-                invalidateQueries: [API_ENDPOINTS.SERVICES],
+                endpoint: `${API_ENDPOINTS.DEPARTMENT_DETAILS}${slug}/`,
+                invalidateQueries: [API_ENDPOINTS.DEPARTMENTS],
                 isToast: true,
             });
 
@@ -85,26 +129,25 @@ export const columns = [
                         <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
                             <DropdownMenuSeparator />
-
                             <DropdownMenuItem
                                 onClick={() => {
-                                    router.push(`/services/${slug}/details`);
-                                }}
-                            >
-                                Details
-                            </DropdownMenuItem>
-
-                            <DropdownMenuItem
-                                onClick={() => {
-                                    router.push(`/services/${slug}/edit`);
+                                    router.push(`/departments/${slug}/edit`);
                                 }}
                             >
                                 Edit
                             </DropdownMenuItem>
 
+                            <DropdownMenuItem
+                                onClick={() => {
+                                    router.push(`/departments/${slug}/details`);
+                                }}
+                            >
+                                Details
+                            </DropdownMenuItem>
+
                             <DeleteDialog
-                                title="Delete Service"
-                                description="Are you sure you want to delete this service? This action cannot be undone."
+                                title="Delete Category"
+                                description="Are you sure you want to delete this category? This action cannot be undone."
                                 onDelete={handleDelete}
                                 isLoading={isPending}
                                 itemName={name}

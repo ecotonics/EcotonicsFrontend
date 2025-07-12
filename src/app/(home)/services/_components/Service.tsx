@@ -46,7 +46,7 @@ const formSchema = z.object({
  
 function Service({ slug }: { slug?: any }) {
     const router = useRouter();
-    const { SERVICES, SERVICES_SINGLE } = API_ENDPOINTS;
+    const { SERVICES, SERVICE_DETAILS } = API_ENDPOINTS;
     const isEditMode = !!slug;
     const [isClient, setIsClient] = useState(false);
  
@@ -168,11 +168,11 @@ function Service({ slug }: { slug?: any }) {
  
     const { mutate: updateMutate, isPending: isUpdating } = useCreateMutation({
         method: "put",
-        endpoint: `${SERVICES_SINGLE}${slug}/`,
+        endpoint: `${SERVICE_DETAILS}${slug}/`,
         submitData: {},
         redirectPath: "",
         isToast: true,
-        invalidateQueries: [SERVICES, SERVICES_SINGLE],
+        invalidateQueries: [SERVICES, SERVICE_DETAILS],
         handleSuccess: (response: any) => {
             router.back();
         },

@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 import { API_ENDPOINTS } from "@/constants/api-endpoints";
 import useCreateMutation from "@/hooks/useCreateMutation";
 import { useRouter } from "next/navigation";
-import { useCategory } from "@/hooks/apis/Categories/category";
+import { useDepartment } from "@/hooks/apis/Departments/department";
 
 const formSchema = z.object({
     name: z
@@ -31,12 +31,12 @@ const formSchema = z.object({
         .max(200, { message: "Info must be at most 200 characters long!" }),
 });
 
-function Category({ slug }: { slug?: any }) {
+function Department({ slug }: { slug?: any }) {
     const router = useRouter();
-    const { CATEGORIES, CATEGORY_DETAILS } = API_ENDPOINTS;
+    const { DEPARTMENTS, DEPARTMENT_DETAILS } = API_ENDPOINTS;
     const isEditMode = !!slug;
 
-    const { data, isLoading } = useCategory({ slug: slug });
+    const { data, isLoading } = useDepartment({ slug: slug });
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -57,11 +57,11 @@ function Category({ slug }: { slug?: any }) {
 
     const { mutate: createMutate, isPending: isCreating } = useCreateMutation({
         method: "post",
-        endpoint: CATEGORIES,
+        endpoint: DEPARTMENTS,
         submitData: {},
         redirectPath: "",
         isToast: true,
-        invalidateQueries: [CATEGORIES],
+        invalidateQueries: [DEPARTMENTS, DEPARTMENT_DETAILS],
         handleSuccess: (response: any) => {
             router.back();
         },
@@ -70,11 +70,11 @@ function Category({ slug }: { slug?: any }) {
 
     const { mutate: updateMutate, isPending: isUpdating } = useCreateMutation({
         method: "put",
-        endpoint: `${CATEGORY_DETAILS}${slug}/`,
+        endpoint: `${DEPARTMENT_DETAILS}${slug}/`,
         submitData: {},
         redirectPath: "",
         isToast: true,
-        invalidateQueries: [CATEGORIES, CATEGORY_DETAILS],
+        invalidateQueries: [DEPARTMENTS, DEPARTMENT_DETAILS],
         handleSuccess: (response: any) => {
             router.back();
         },
@@ -96,7 +96,7 @@ function Category({ slug }: { slug?: any }) {
             <div className="rounded-lg shadow-lg border p-6">
                 <div className="mb-6">
                     <h2 className="text-2xl font-semibold mb-2">
-                        {isEditMode ? "Edit Category" : "Create Category"}
+                        {isEditMode ? "Edit Department" : "Create Department"}
                     </h2>
                     <p className="text-xs">Please fill out the form below</p>
                 </div>
@@ -108,7 +108,7 @@ function Category({ slug }: { slug?: any }) {
                     >
                         {isEditMode && isLoading ? (
                             <div className="flex items-center justify-center">
-                                <p>Loading category data...</p>
+                                <p>Loading department data...</p>
                             </div>
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
@@ -119,7 +119,7 @@ function Category({ slug }: { slug?: any }) {
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>
-                                                    Category Name
+                                                    Department Name
                                                 </FormLabel>
                                                 <FormControl>
                                                     <Input {...field} />
@@ -157,8 +157,8 @@ function Category({ slug }: { slug?: any }) {
                                         ? "Updating..."
                                         : "Creating..."
                                     : isEditMode
-                                    ? "Update Category"
-                                    : "Create Category"}
+                                    ? "Update Department"
+                                    : "Create Department"}
                             </Button>
                         </div>
                     </form>
@@ -168,4 +168,4 @@ function Category({ slug }: { slug?: any }) {
     );
 }
 
-export default Category;
+export default Department;

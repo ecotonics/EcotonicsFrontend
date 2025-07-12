@@ -4,29 +4,29 @@ export const API_ENDPOINTS = {
 
     // CATEGORIES
     CATEGORIES: "service/categories/",
-    CATEGORIES_SINGLE: "service/category/",
+    CATEGORY_DETAILS: "service/category/",
 
     // SERVICES
     SERVICES: "service/services/",
-    SERVICES_SINGLE: "service/service/",
+    SERVICE_DETAILS: "service/service/",
 
     // CUSTOMERS
     CUSTOMERS: "customers/customers/",
-    CUSTOMERS_SINGLE: "customers/customer/",
+    CUSTOMER_DETAILS: "customers/customer/",
 
     // DEPARTMENTS
     DEPARTMENTS: "workforce/departments/",
-    DEPARTMENTS_SINGLE: "workforce/department/",
+    DEPARTMENT_DETAILS: "workforce/department/",
 
     // DESIGNATIONS
     DESIGNATIONS: "workforce/designations/",
-    DESIGNATIONS_SINGLE: "workforce/designation/",
+    DESIGNATION_DETAILS: "workforce/designation/",
 
     // STAFFS
     STAFFS: "workforce/staffs/",
-    STAFFS_SINGLE: "workforce/staff/",
+    STAFF_DETAILS: "workforce/staff/",
 
     // ONCALLS
     ONCALLS: "works/oncalls/",
-    ONCALLS_SINGLE: "works/oncall/",
+    ONCALL_DETAILS: "works/oncall/",
 };

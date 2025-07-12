@@ -3,6 +3,7 @@
 
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
+
 import {
     Calendar,
     ChevronUp,
@@ -14,6 +15,7 @@ import {
     Users,
     DoorOpen,
 } from "lucide-react";
+
 import {
     Sidebar,
     SidebarContent,
@@ -79,14 +81,30 @@ function AppSidebar() {
         },
         {
             title: "Workforce",
-            url: "/workforce",
-            icon: Calendar,
-            badge: "14",
+            url: "#",
+            icon: Users,
+            children: [
+                {
+                    title: "Departments",
+                    url: "/departments",
+                    icon: Settings,
+                },
+                {
+                    title: "Designations",
+                    url: "/designations",
+                    icon: Settings,
+                },
+                {
+                    title: "Staffs",
+                    url: "/staffs",
+                    icon: Users,
+                },
+            ],
         },
         {
-            title: "Masters",
-            url: "/masters",
-            icon: Settings,
+            title: "Customers",
+            url: "/customers",
+            icon: Users,
         },
     ];
 
@@ -198,11 +216,11 @@ function AppSidebar() {
                                                 <span>{item.title}</span>
                                             </Link>
                                         </SidebarMenuButton>
-                                        {item.badge && (
+                                        {/* {item.badge && (
                                             <SidebarMenuBadge>
                                                 {item.badge}
                                             </SidebarMenuBadge>
-                                        )}
+                                        )} */}
                                     </SidebarMenuItem>
                                 )
                             )}
