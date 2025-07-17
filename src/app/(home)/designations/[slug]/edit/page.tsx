@@ -1,9 +1,18 @@
-import React from 'react'
+"use client";
 
-const page = () => {
+import React from "react";
+import Designation from "../../_components/Designation";
+import { useParams } from "next/navigation";
+
+function EditDesignation() {
+    const params = useParams();
+    const slug = params.slug ?? "";
+
     return (
-        <div>page</div>
-    )
+        <>
+            <Designation slug={slug} />
+        </>
+    );
 }
 
-export default page
+export default EditDesignation;

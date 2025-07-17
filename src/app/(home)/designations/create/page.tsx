@@ -1,8 +1,9 @@
 import React from 'react'
+import Designation from '../_components/Designation'
 
 const page = () => {
     return (
-        <div>page</div>
+        <Designation />
     )
 }
 

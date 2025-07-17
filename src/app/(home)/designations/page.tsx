@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import Designations from "./_components/Designations";
 
-const page = () => {
+export default function Page() {
     return (
-        <div>page</div>
-    )
+        <>
+            <Designations />
+        </>
+    );
 }
-
-export default page
