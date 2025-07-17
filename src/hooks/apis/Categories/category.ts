@@ -5,7 +5,7 @@ import { API_ENDPOINTS } from "@/constants/api-endpoints";
 import getApiData from "@/utils/api-fetch/get-api-data";
 
 const { CATEGORY_DETAILS } = API_ENDPOINTS;
-export const useCategory = ({ slug }: { slug?: any }) => {
+export const useCategory = ({ slug }: { slug?: string }) => {
     const fetchCategory = async () => {
         const response = await getApiData(`${CATEGORY_DETAILS}${slug}/`);
         return response;

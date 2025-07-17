@@ -3,7 +3,7 @@ import { API_ENDPOINTS } from "@/constants/api-endpoints";
 import getApiData from "@/utils/api-fetch/get-api-data";
 
 const { SERVICE_DETAILS } = API_ENDPOINTS;
-export const useService = ({ slug }: { slug?: any }) => {
+export const useService = ({ slug }: { slug?: string }) => {
     const fetchService = async () => {
         const response = await getApiData(`${SERVICE_DETAILS}${slug}/`);
         return response;
