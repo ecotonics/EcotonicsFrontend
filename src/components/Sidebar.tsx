@@ -38,7 +38,7 @@ import {
     DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { DropdownMenuContent, DropdownMenuItem } from "./ui/dropdown-menu";
-import logo from "logo.png";
+import logo from "../../public/assets/images/logo.svg";
 import {
     Collapsible,
     CollapsibleContent,
