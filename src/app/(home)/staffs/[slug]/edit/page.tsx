@@ -1,9 +1,18 @@
-import React from 'react'
+"use client";
 
-const page = () => {
+import React from "react";
+import Staff from "../../_components/Staff";
+import { useParams } from "next/navigation";
+
+function EditStaff() {
+    const params = useParams();
+    const slug = params.slug ?? "";
+
     return (
-        <div>page</div>
-    )
+        <>
+            <Staff slug={slug} />
+        </>
+    );
 }
 
-export default page
+export default EditStaff;

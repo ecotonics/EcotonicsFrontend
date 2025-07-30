@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Staff from "../_components/Staff";
 
-const page = () => {
+function page() {
     return (
-        <div>page</div>
-    )
+        <>
+            <Staff />
+        </>
+    );
 }
 
-export default page
+export default page;

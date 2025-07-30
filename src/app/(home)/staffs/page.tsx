@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import Staffs from "./_components/Staffs";
 
-const page = () => {
+export default function Page() {
     return (
-        <div>page</div>
-    )
+        <>
+            <Staffs />
+        </>
+    );
 }
-
-export default page
